@@ -3,11 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crescendo Juntos</title>
+    <title>Pratique Bootstrap</title>
     <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <style>
+        /* GERAL */
+        body {
+            background: linear-gradient(#f5deb3, #333300);
+        }
+        #btn-custom-light {
+            background-color: rgba(245, 222, 179, 0.8);
+            color: #333300;
+            border: 1px solid #333300;
+        }
+        #btn-custom-dark {
+            background-color: rgba(51, 51, 0, 0.8);
+            color: #f5deb3;
+            border: 1px solid #f5deb3;
+        }
+        #txt-custom-dark {
+            color: #333300;
+        }
+        #txt-custom-light {
+            color: #f5deb3;
+        }
+        /* CABECALHO */
+        .nav-item a:hover {
+            background-color: #333300;
+            color: #f5deb3;
+        }
+        .navbar-nav .nav-link.active {
+            color: #f5deb3;
+            background-color: #333300;
+        }
+        .nav-link {
+            text-align: center;
+            justify-content: flex-end;
+        }
+        #titulo_site {
+            color: #333300;
+            transition: color 3s;
+        }
+        /* CAROUSEL */
+        #secao_carousel {
+            height: 70vh;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 70vh; /* Altura da viewport */
+            object-fit: cover; /* Faz a imagem cobrir todo o contêiner */
+            border: 1px solid #333300;
+            border-radius: 10px;
+        }
+        /* GRID */
+        #secao_grid {
+            padding-top: 15px;
+            padding-bottom:15px;
+        }
+        #coluna {
+            margin-bottom: 1em;
+        }
+        .row > h1 {
+            text-align: center;
+            padding-bottom: 15px;
+            margin-top: 1em;
+            margin-bottom: 1.5em;
+            color: #333300;
+        }
+        #texto_imagem_1 {
+            color: #F5DEB3;
+        }
+        #texto_imagem_2 {
+            color: #f5deb3;
+        }
+        #texto_imagem_3 {
+            color: #333300;
+        }
+        .card {
+            transition: transform 0.5s;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card-img-overlay {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro semi-transparente para melhor contraste */
+            transition: background-color 0.5s ease;
+        }
+        .card-img-overlay:hover {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        
+        /* CONTATO */
+        #secao_contato {
+            padding: 75px;
+            /* background-color: #343A40; */
+            text-align: center;
+            margin-bottom: 50px;
+            color: #F5DEB3;
+        }
+        #secao_contato > h1 {
+            margin-top: 70px;
+            padding-bottom: 15px;
+            color: #F5DEB3;
+        }
+        .form-control:focus {
+            border-color: #F5DEB3;
+            box-shadow: 0 0 0 0.2rem rgba(245, 222, 179, 1); /* Ajuste a sombra conforme necessário */
+        }
+        #nome,
+        #whatsapp,
+        #email,
+        #mensagem {
+            background-color: rgba(51, 51, 0, 0.5);
+            color: #f5deb3;
+            cursor: color #f5deb3;
+        }
+        #whatsapp::placeholder {
+            color: #f5deb3;
+        }
+        textarea {
+            resize: none;
+        }
+        .btn-group {
+            margin-top: 10px;
+        }
+        .dropdown-item a {
+            text-decoration: none;
+            color: #fff;
+        }
+        #menu-dropdown {
+            background-color: #333300;
+            color: #f5deb3;
+            border: 1px solid #f5deb3;
+            border-radius: 9px;
+        }
+        .dropdown-item {
+            color: #f5deb3;
+        }
+        .dropdown-item a {
+            color: #f5deb3;
+        }
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: #f5deb3;
+            color: #333300;
+        }
+        .dropdown-item:hover a, .dropdown-item:focus a {
+            color: #333300;
+        }
+        /* FOOTER */
+        #pe {
+            padding-bottom: 30px;
+            text-align: center;
+            color: #F5DEB3;
+        }        
+        @media screen and (max-width : 640px) {
+            /* Certifique-se de que a imagem ocupe a largura total do card */
+            .card img {
+                width: 100%;
+                height: auto;
+            }
+            /* Empurre o footer para o final da card-img-overlay */
+            .card-footer {
+                margin-top: 10px;
+            }
+            /* Adicione uma transição suave ao redimensionar a janela */
+            .card {
+                transition: all 0.3s ease-in-out;
+                width: 70%;
+                margin-bottom: 40px;
+                justify-content: center;
+            }
+            #txt-custom-light {
+                margin-bottom: 0px;
+            }
+            #coluna {
+                display: flex;
+                justify-content: center;
+            }
+            #secao_contato {
+                margin-bottom: 75px;
+            }
+            #secao_contato h1 {
+                margin-top: 1em;
+                margin-bottom: 1em;
+            }
+            #pe {
+                padding-bottom: 15px;
+            }
+            #img-slide {
+                height: 60vh;
+            }
+            #secao_carousel{
+                margin-top: 10px;
+            }
+        }
+        /* @media screen and (min-width : 641px) and (max-width : 1023px) {
+            #coluna {
+                margin-bottom: 3em;
+            }
+            #txt-custom-light {
+                margin-bottom: 0px;
+            }
+            #txt-custom-dark {
+                margin-bottom: 0px;
+            }
+            #btn-custom-dark {
+                margin-top: 0px;
+            }
+        } */
+        @media screen and (min-width : 641px) and (max-width : 768px) {
+            .card-img-overlay h4 {
+                font-size: 20px;
+            }
+            .card-img-overlay p {
+                font-size: 12px;
+                margin-bottom: 0px;
+            }
+            .card-img-overlay a {
+                margin-top: 0px;
+            }
+            .card-img-overlay footer {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>teste</h1>
+    <header id="cabecalho">
+        <div class="container">
+            <div class="navbar navbar-expand-lg">
+                <h1 id="titulo_site">ImpresArte</h1>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="collapse navbar-collapse justify-content-end" id="menu">
+                    <ul class="nav nav-pills navbar-nav">
+                        <li class="nav-item">
+                            <a href="#secao_carousel" class="nav-link active" onclick="toggleFields ('menufield1')" id="menu-field-1">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#secao_grid" class="nav-link" onclick="toggleFields ('menufield2')" id="menu-field-2">Artes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#secao_contato" class="nav-link" onclick="toggleFields ('menufield3')" id="menu-field-3">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container" id="secao_carousel">
+        <div class="carousel carousel-fade slide" data-bs-ride="carousel" id="carousel">
+            <div class="carousel-inner">
+                <div data-bs-interval="3000" class="carousel-item active">
+                    <img class="d-block w-100" src="./images/slide_01.jpg" alt="" id="img-slide">
+                    <div class="carousel-caption">
+                        <h2 id="texto_imagem_1">Quadro 1</h2>
+                    </div>
+                </div>
+                <div data-bs-interval="3000" class="carousel-item">
+                    <img class="d-block w-100" src="./images/slide_02.jpg" alt="" id="img-slide">
+                    <div class="carousel-caption">
+                        <h2 id="texto_imagem_2">Quadro 2</h2>
+                    </div>
+                </div>
+                <div data-bs-interval="3000" class="carousel-item">
+                    <img class="d-block w-100" src="./images/slide_03.jpg" alt="" id="img-slide">
+                    <div class="carousel-caption">
+                        <h2 id="texto_imagem_3">Quadro 3</h2>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="carousel-control-next" data-bs-slide="next" data-bs-target="#carousel">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <button type="button" class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carousel">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-slide-to="0" data-bs-target="#carousel" class="active"></button>
+                <button type="button" data-bs-slide-to="1" data-bs-target="#carousel"></button>
+                <button type="button" data-bs-slide-to="2" data-bs-target="#carousel"></button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="secao_grid">
+        <div class="row">
+            <h1>Artes</h1>
+            <div class="col-4" id="coluna">
+                <article class="card">
+                    <img src="./images/slide_04.jpg" alt="">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title" id="txt-custom-dark">Quadro 4</h4>
+                        <p class="card-text mb-5" id="txt-custom-dark">Pintado em óleo sobre tela</p>
+                        <a href="#" id="btn-custom-dark" class="btn btn-light mt-4 botaoCard">Ver Mais</a>
+                        <footer class="card-footer p-1 mt-3" id="txt-custom-dark">
+                            Postado em <time>16/05/2024 às 13:00</time>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+            <div class="col-4" id="coluna">
+                <article class="card text-bg-dark">
+                    <img src="./images/slide_05.jpg" alt="">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title" id="txt-custom-dark">Quadro 5</h4>
+                        <p class="card-text mb-5" id="txt-custom-dark">Pintado com aquarela</p>
+                        <a href="#" id="btn-custom-dark" class="btn btn-dark mt-4 botaoCard">Ver Mais</a>
+                        <footer class="card-footer p-1 mt-3" id="txt-custom-dark">
+                            Postado em <time>16/05/2024 às 13:00</time>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+            <div class="col-4" id="coluna">
+                <article class="card">
+                    <img src="./images/slide_06.jpg" alt="">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title" id="txt-custom-light">Quadro 6</h4>
+                        <p class="card-text mb-5" id="txt-custom-light">Pintado em óleo sobre tela</p>
+                        <a href="#" id="btn-custom-light" class="btn btn-light mt-4 botaoCard">Ver Mais</a>
+                            <footer class="card-footer p-1 mt-3" id="txt-custom-light">
+                            Postado em <time>16/05/2024 às 13:00</time>
+                            </footer>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="secao_contato">
+        <h1>Contato</h1>
+        <form>
+            <div class="form-group">
+                <label for="#nome">Seu Nome:</label>
+                <input type="text" name="nome" id="nome" class="form-control">
+            </div>
+            <div class="form-group" id="whatsapp-field">
+                <label for="whatsapp">Seu Whatsapp:</label>
+                <input type="tel" name="whatsapp" id="whatsapp" class="form-control">
+            </div>
+            <div class="form-group d-none" id="email-field">
+                <label for="email">Seu E-mail:</label>
+                <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Sua Mensagem:</label>
+                <textarea name="mensagem" id="mensagem" class="form-control"></textarea>
+            </div>
+            <div class="container">
+                <div class="btn-group">
+                    <button id="btn-custom-light" class="btn btn-dark">Enviar Mensagem</button>
+                    <button id="btn-custom-light" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                        <ul class="dropdown-menu" id="menu-dropdown">
+                            <li class="dropdown-item" onclick="toggleFields('whatsapp')">
+                                <a href="#">Whatsapp</a>
+                            </li>
+                            <li class="dropdown-item" onclick="toggleFields('email')">
+                                <a href="#">E-mail</a>
+                            </li>
+                        </ul>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <footer id="pe">
+            <p>
+                ImpresArte © Todos os direitos reservados - 2024
+            </p>
+        </footer>
+    </div>
+    <button class="btn btn-success d-none" data-bs-toggle="modal" data-bs-target="#modal-passagem" id="botao_invisivel">Abrir Modal</button>
+    <div class="modal" data-bs-backdrop="static" id="modal-passagem">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>🍪 Esse site usa cookies 🍪</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Nós armazenamos dados temporariamente para melhorar a sua experiência de navegação e recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você concorda com tal monitoramento.</p>
+                </div>
+                <div class="modal-footer">
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-danger">Rejeitar</button>
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-success">Aceitar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="./lib/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+    $('#whatsapp').mask('(00)00000-0000', {placeholder: '(__)_____-____'});
+    const botao_invisivel = document.getElementById('botao_invisivel');
+    
+    $('document').ready(function (){
+        botao_invisivel.click();
+    })
+    function toggleFields(field) {
+        const whatsappField = document.getElementById('whatsapp-field');
+        const emailField = document.getElementById('email-field');
+        const menuField1 = document.getElementById('menu-field-1');
+        const menuField2 = document.getElementById('menu-field-2');
+        const menuField3 = document.getElementById('menu-field-3');
+
+        if (field ==='menufield1') {
+            menuField1.classList.add('active');
+            menuField2.classList.remove('active');
+            menuField3.classList.remove('active');
+        } else if (field ==='menufield2') {
+            menuField1.classList.remove('active');
+            menuField2.classList.add('active');
+            menuField3.classList.remove('active');
+        } else if (field ==='menufield3') {
+            menuField1.classList.remove('active');
+            menuField2.classList.remove('active');
+            menuField3.classList.add('active');
+        }
+        if (field === 'whatsapp') {
+            whatsappField.classList.remove('d-none');
+            emailField.classList.add('d-none');
+        } else if (field === 'email') {
+            emailField.classList.remove('d-none');
+            whatsappField.classList.add('d-none')
+        }
+    }
+    
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        function resposiveMobile() {
+            const colunas = document.querySelectorAll('#coluna');
+            const width = window.innerWidth;
+            const txtCustomLights = document.querySelectorAll('#txt-custom-light');
+            const txtCustomDarks = document.querySelectorAll('#txt-custom-dark');
+            const botaoCards = document.querySelectorAll('.botaoCard')
+
+            colunas.forEach(coluna => {
+                if (width <= 640) {
+                    coluna.classList.remove('col-4', 'col-md-4', 'col-6');
+                    coluna.classList.add('col-12');
+                } else if (width >= 641 && width <= 1023){
+                    coluna.classList.remove('col-12', 'col-4', 'col-md-4');
+                    coluna.classList.add('col-6');
+                } else {
+                    coluna.classList.remove('col-12', 'col-md-4', 'col-6');
+                    coluna.classList.add('col-4');
+                }
+            });
+
+            txtCustomLights.forEach(txtCustomLight => {
+                if (width <= 640) {
+                    txtCustomLight.classList.remove('mb-5');
+                } else if (width >= 641 && width <= 1023) {
+                    txtCustomLight.classList.remove('mb-5');
+                }
+            });
+            txtCustomDarks.forEach(txtCustomDark => {
+                if (width <= 640) {
+                    txtCustomDark.classList.remove('mb-5');
+                } else if (width >= 641 && width <= 1023) {
+                    txtCustomDark.classList.remove('mb-5');
+                }
+            })
+
+            botaoCards.forEach(botaoCard => {
+                if (width >= 641 && width <= 768) {
+                    botaoCard.classList.remove('mt-4');
+                    botaoCard.classList.add('mt-2');
+                }
+            })
+        }
+
+        // Chama a função quando a página é carregada
+        resposiveMobile();
+
+        // Adiciona um listener para chamar a função sempre que a janela for redimensionada
+        window.addEventListener('resize', resposiveMobile);
+    });
+    </script>    
 </body>
 </html>
