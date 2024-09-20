@@ -304,9 +304,9 @@
                     <img src="./images/slide_04.jpg" alt="">
                     <div class="card-img-overlay">
                         <h4 class="card-title" id="txt-custom-dark">Quadro 4</h4>
-                        <p class="card-text mb-5" id="txt-custom-dark">Pintado em óleo sobre tela</p>
-                        <a href="#" id="btn-custom-dark" class="btn btn-light mt-4 botaoCard">Ver Mais</a>
-                        <footer class="card-footer p-1 mt-3" id="txt-custom-dark">
+                        <p class="card-text" id="txt-custom-dark">Pintado em óleo sobre tela</p>
+                        <a href="#" id="btn-custom-dark" class="btn btn-light botaoCard">Ver Mais</a>
+                        <footer class="card-footer p-1" id="txt-custom-dark">
                             Postado em <time>16/05/2024 às 13:00</time>
                         </footer>
                     </div>
@@ -317,9 +317,9 @@
                     <img src="./images/slide_05.jpg" alt="">
                     <div class="card-img-overlay">
                         <h4 class="card-title" id="txt-custom-dark">Quadro 5</h4>
-                        <p class="card-text mb-5" id="txt-custom-dark">Pintado com aquarela</p>
-                        <a href="#" id="btn-custom-dark" class="btn btn-dark mt-4 botaoCard">Ver Mais</a>
-                        <footer class="card-footer p-1 mt-3" id="txt-custom-dark">
+                        <p class="card-text" id="txt-custom-dark">Pintado com aquarela</p>
+                        <a href="#" id="btn-custom-dark" class="btn btn-dark botaoCard">Ver Mais</a>
+                        <footer class="card-footer p-1" id="txt-custom-dark">
                             Postado em <time>16/05/2024 às 13:00</time>
                         </footer>
                     </div>
@@ -330,9 +330,9 @@
                     <img src="./images/slide_06.jpg" alt="">
                     <div class="card-img-overlay">
                         <h4 class="card-title" id="txt-custom-light">Quadro 6</h4>
-                        <p class="card-text mb-5" id="txt-custom-light">Pintado em óleo sobre tela</p>
-                        <a href="#" id="btn-custom-light" class="btn btn-light mt-4 botaoCard">Ver Mais</a>
-                            <footer class="card-footer p-1 mt-3" id="txt-custom-light">
+                        <p class="card-text" id="txt-custom-light">Pintado em óleo sobre tela</p>
+                        <a href="#" id="btn-custom-light" class="btn btn-light botaoCard">Ver Mais</a>
+                            <footer class="card-footer p-1" id="txt-custom-light">
                             Postado em <time>16/05/2024 às 13:00</time>
                             </footer>
                     </div>
@@ -448,13 +448,14 @@
             const width = window.innerWidth;
             const txtCustomLights = document.querySelectorAll('#txt-custom-light');
             const txtCustomDarks = document.querySelectorAll('#txt-custom-dark');
+            const txtCustomExcep = document.querySelectorAll('.card-title');
             const botaoCards = document.querySelectorAll('.botaoCard')
 
             colunas.forEach(coluna => {
                 if (width <= 640) {
                     coluna.classList.remove('col-4', 'col-md-4', 'col-6');
                     coluna.classList.add('col-12');
-                } else if (width >= 641 && width <= 1023){
+                } else if (width >= 641 && width <= 1439){
                     coluna.classList.remove('col-12', 'col-4', 'col-md-4');
                     coluna.classList.add('col-6');
                 } else {
@@ -465,16 +466,28 @@
 
             txtCustomLights.forEach(txtCustomLight => {
                 if (width <= 640) {
-                    txtCustomLight.classList.remove('mb-5');
-                } else if (width >= 641 && width <= 1023) {
-                    txtCustomLight.classList.remove('mb-5');
+                    if (!txtCustomLight.classList.contains('card-title')) {
+                        txtCustomLight.classList.add('d-none');
+                    }
+                } else if (width >= 641 && width <= 1439) {
+                    txtCustomLight.classList.remove('d-none');
                 }
+                txtCustomLight.classList.remove('mb-5');
             });
             txtCustomDarks.forEach(txtCustomDark => {
                 if (width <= 640) {
-                    txtCustomDark.classList.remove('mb-5');
-                } else if (width >= 641 && width <= 1023) {
-                    txtCustomDark.classList.remove('mb-5');
+                    if (!txtCustomDark.classList.contains('card-title')) {
+                        txtCustomDark.classList.add('d-none');
+                    }
+                } else if (width >= 641 && width <= 1439) {
+                    txtCustomDark.classList.remove('d-none');
+                }
+                txtCustomDark.classList.remove('mb-5');
+            })
+
+            botaoCards.forEach(botaoCard => {
+                if (width <= 641) {
+                    botaoCard.classList.add('mt-5');
                 }
             })
 
